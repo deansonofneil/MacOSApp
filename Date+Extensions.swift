@@ -63,6 +63,21 @@ extension Date {
         }
     var timestamp: TimeInterval {
         return timeIntervalSince1970
+    
+    }
+    
+    var isMorning: Bool {
+    let symbol = calendar.amSymbol.lowercased()
+    
+    if symbol == "am" {
+        return true
+    } else if symbol == "pm" {
+        return false
+    } else if hours > 14 {
+        return false
+    }
+        
+    return true
     }
     private func getStringTime(showSeconds: Bool = false) -> String {
         var time = "\(hours.safeString):\(minutes.safeString)"
